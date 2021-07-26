@@ -1,0 +1,96 @@
+<app-dashboard>
+  <router-outlet>
+    <div class="row">
+  <div class="col-md-12">
+    <h4 class="remove-margin">Edit User Detail </h4>
+    <div class="card">
+      <div class="card-header">
+        <!-- <h5 class="card-title">Edit Profile</h5> -->
+      </div>
+      <div class="card-body">
+        <form [formGroup]="updateUser" (ngSubmit)="updateUserDetails()">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="hidden" name="_method" value="PUT">
+                <label></label>
+                <input type="text" formControlName="name" class="form-control" placeholder="Name" required>
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                     class="form-text text-muted">
+                  <div *ngIf="name.errors?.required">
+                    Name is required.
+                  </div>
+                  <div *ngIf="name.errors?.minlength">
+                    Name must be at least 5 characters long.
+                  </div>
+                </div>
+                <small id="emailHelp" class="form-text text-muted" *ngIf="serverErrors">{{ serverErrors.name }}</small>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label></label>
+                <input type="email" formControlName="email" class="form-control" placeholder="Email" disabled = true required>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="hidden" name="_method" value="PUT">
+                <label></label>
+                <input type="password" formControlName="password" class="form-control" placeholder="Password" required>
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                     class="form-text text-muted">
+                  <div *ngIf="name.errors?.required">
+                    password is required.
+                  </div>
+                  <div *ngIf="name.errors?.minlength">
+                    Password must be at least 5 characters long.
+                  </div>
+                </div>
+                <small id="emailHelp" class="form-text text-muted" *ngIf="serverErrors">{{ serverErrors.name }}</small>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="hidden" name="_method" value="PUT">
+                <label></label>
+                <input type="password" formControlName="confirm_password" class="form-control" placeholder="Confirm Password" required>
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                     class="form-text text-muted">
+                  <div *ngIf="name.errors?.required">
+                    Password is required.
+                  </div>
+                  <div *ngIf="name.errors?.minlength">
+                    Password must be at least 5 characters long.
+                  </div>
+                </div>
+                <small id="emailHelp" class="form-text text-muted" *ngIf="serverErrors">{{ serverErrors.name }}</small>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button type="submit" class="btn btn-primary btn-round" [disabled]="!updateUser.valid">Update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  </router-outlet>
+</app-dashboard>
+
